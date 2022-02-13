@@ -1,14 +1,32 @@
-<div class="container mt-3">
-  <div class="card p-2">
-    <p>Untitled Form</p>
-    <i class="material-icons">add</i>
+<div cdkDropList class="container mt-3">
+  <!-- title card -->
+  <div #title class="card p-2" cdkDrag>
+    <h1>Dynamic form samples</h1>
+    <!-- <i class="material-icons">add</i> -->
   </div>
 
-  <div class="card p-2 mt-3">
+  <div #freeText class="card p-2 mt-3" cdkDrag>
+    <!-- question display  -->
+    <label>
+      {{ freeTextQuestion.question.text }}
+      <span *ngIf="freeTextQuestion.required">*</span>
+    </label>
+    <!--question details input -->
+    <div class="row">
+      <div class="col-6">
+        <input
+          type="text"
+          [placeholder]="freeTextQuestion.question.placeholder"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div #question class="card p-2 mt-3" cdkDrag>
     <p>Untitled Form</p>
     <div class="row">
       <div class="col-6">
-        <input type="text" />
+        <input type="text" placeholder="question title" />
       </div>
       <div class="col-6">
         <label for="typeOfQuestion">Choose a type:</label>

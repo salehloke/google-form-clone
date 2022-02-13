@@ -1,40 +1,58 @@
-<div cdkDropList class="container mt-3">
-  <!-- title card -->
-  <div #title class="card p-2" cdkDrag>
-    <h1>Dynamic form samples</h1>
-    <!-- <i class="material-icons">add</i> -->
-  </div>
-
-  <div #freeText class="card p-2 mt-3" cdkDrag>
-    <!-- question display  -->
-    <label>
-      {{ freeTextQuestion.question.text }}
-      <span *ngIf="freeTextQuestion.required">*</span>
-    </label>
-    <!--question details input -->
-    <div class="row">
-      <div class="col-6">
-        <input
-          type="text"
-          [placeholder]="freeTextQuestion.question.placeholder"
-        />
-      </div>
-    </div>
-  </div>
-
-  <div #question class="card p-2 mt-3" cdkDrag>
-    <p>Untitled Form</p>
-    <div class="row">
-      <div class="col-6">
-        <input type="text" placeholder="question title" />
-      </div>
-      <div class="col-6">
-        <label for="typeOfQuestion">Choose a type:</label>
-        <select name="typeOfQuestion" id="typeOfQuestion">
-          <option value="">Free text</option>
-          <option value="">Multiple Choice</option>
-          <option value="">Checkbox</option>
-        </select>
+<!-- title card -->
+<div #title class="card p-2" cdkDrag>
+  <h1>Dynamic form samples</h1>
+  <!-- <i class="material-icons">add</i> -->
+</div>
+<div
+  cdkDropList
+  class="container mt-3"
+  (cdkDropListDropped)="dropCardElement($event)"
+>
+  <div *ngFor="let element of cardElements" cdkDrag>
+    <div class="card p-2 mt-3">
+      <!-- question label  -->
+      <label>
+        {{ element.question.text }}
+        <span *ngIf="element.required">*</span>
+      </label>
+      <div [ngSwitch]="element.question.type">
+        <!-- FREE TEXT  -->
+        <div *ngSwitchCase="'freeText'">
+          <div class="row">
+            <div class="col-6">
+              <input
+                *ngIf="element.question.type === 'freeText'"
+                type="text"
+                [placeholder]="freeTextQuestion.question.placeholder"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- END OF FREE TEXT -->
+        <!-- RADIO QUESTION -->
+        <div *ngSwitchCase="'radio'">
+          <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
+            <!-- offeredAnswers -->
+            <div
+              class="row"
+              *ngFor="let offeredAnswer of element.question?.offeredAnswers"
+              cdkDrag
+            >
+              <div class="col">
+                <input type="radio" name="offeredAnswer.id" />
+                <label for="offeredAnswer.id"> {{ offeredAnswer.value }}</label>
+              </div>
+            </div>
+            <!-- otherAnswers -->
+            <div class="col">
+              <input type="radio" name="element.question?.otherAnswer" />
+              <label for="element.question?.otherAnswer">
+                other: <input type="text"
+              /></label>
+            </div>
+          </div>
+        </div>
+        <!-- END OF RADIO QUESTION -->
       </div>
     </div>
   </div>

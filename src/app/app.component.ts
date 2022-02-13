@@ -62,6 +62,7 @@ export class AppComponent {
           value: 'second checkbox Answer',
         },
       ],
+      otherAnswerId: '003',
       otherAnswer: true,
       otherAnswerValue: 'random text here as an answer',
     },

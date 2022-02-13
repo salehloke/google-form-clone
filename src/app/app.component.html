@@ -29,8 +29,35 @@
           </div>
         </div>
         <!-- END OF FREE TEXT -->
-        <!-- RADIO QUESTION -->
+        <!-- RADIO  -->
         <div *ngSwitchCase="'radio'">
+          <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
+            <!-- offeredAnswers -->
+            <div
+              class="row"
+              *ngFor="
+                let offeredAnswer of element.question?.offeredAnswers;
+                last as isLast
+              "
+              cdkDrag
+            >
+              <div class="col-12">
+                <input type="radio" name="offeredAnswer.id" />
+                <label for="offeredAnswer.id"> {{ offeredAnswer.value }}</label>
+                <!-- otherAnswers -->
+                <div *ngIf="isLast" class="col-12">
+                  <input type="radio" name="element.question?.otherAnswer" />
+                  <label for="element.question?.otherAnswer">
+                    other: <input type="text"
+                  /></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END OF RADIO  -->
+        <!-- CHECKBOX  -->
+        <div *ngSwitchCase="'checkbox'">
           <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
             <!-- offeredAnswers -->
             <div
@@ -39,20 +66,20 @@
               cdkDrag
             >
               <div class="col">
-                <input type="radio" name="offeredAnswer.id" />
+                <input type="checkbox" name="offeredAnswer.id" />
                 <label for="offeredAnswer.id"> {{ offeredAnswer.value }}</label>
               </div>
             </div>
             <!-- otherAnswers -->
             <div class="col">
-              <input type="radio" name="element.question?.otherAnswer" />
+              <input type="checkbox" name="element.question?.otherAnswer" />
               <label for="element.question?.otherAnswer">
                 other: <input type="text"
               /></label>
             </div>
           </div>
         </div>
-        <!-- END OF RADIO QUESTION -->
+        <!-- END OF CHECKBOX -->
       </div>
     </div>
   </div>

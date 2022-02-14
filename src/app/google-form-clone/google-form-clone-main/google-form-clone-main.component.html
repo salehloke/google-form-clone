@@ -1,22 +1,23 @@
-<nav ngbNav #nav="ngbNav" class="nav-tabs">
-  <ng-container ngbNavItem>
-    <a ngbNavLink>Builder</a>
-    <ng-template ngbNavContent>
-      <p>Coming soon</p>
-    </ng-template>
-  </ng-container>
-  <ng-container ngbNavItem>
-    <a ngbNavLink>Viewer</a>
-    <ng-template ngbNavContent>
-      <google-form-clone-viewer></google-form-clone-viewer>
-    </ng-template>
-  </ng-container>
-  <ng-container ngbNavItem>
-    <a ngbNavLink>Model</a>
-    <ng-template ngbNavContent>
-      <p>Coming soon</p>
-    </ng-template>
-  </ng-container>
-</nav>
-
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<div class="container" >
+  <nav ngbNav #nav="ngbNav" class="nav-tabs">
+    <ng-container ngbNavItem>
+      <a ngbNavLink> Viewer </a>
+      <ng-template ngbNavContent>
+        <google-form-clone-viewer></google-form-clone-viewer>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+      <a ngbNavLink>Builder</a>
+      <ng-template ngbNavContent>
+        <p>Coming soon</p>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+      <a ngbNavLink>Model</a>
+      <ng-template ngbNavContent>
+        <p>Coming soon</p>
+      </ng-template>
+    </ng-container>
+  </nav>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

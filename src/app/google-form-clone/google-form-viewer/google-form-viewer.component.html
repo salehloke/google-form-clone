@@ -8,10 +8,13 @@
   class="container mt-3"
   (cdkDropListDropped)="dropCardElement($event)"
 >
-  <div *ngFor="let element of cardElements" cdkDrag>
-    <div class="card p-2 mt-3">
+  <div class="myDiv" *ngFor="let element of cardElements" cdkDrag>
+    <div class="card p-2 mt-3 draggable">
+      <div class="text-center p-0 m-0">
+        <i class="material-icons text-center p-0 m-0">drag_handle</i>
+      </div>
       <!-- question label  -->
-      <label>
+      <label class="form-label">
         {{ element.question.text }}
         <span *ngIf="element.required">*</span>
       </label>
@@ -21,6 +24,7 @@
           <div class="row">
             <div class="col-6">
               <input
+                class="form-control"
                 *ngIf="element.question.type === 'freeText'"
                 type="text"
                 [placeholder]="freeTextQuestion.question.placeholder"
@@ -41,12 +45,26 @@
               "
               cdkDrag
             >
-              <div class="col-12">
-                <input type="radio" name="offeredAnswer.id" />
-                <label for="offeredAnswer.id"> {{ offeredAnswer.value }}</label>
-                <!-- remarks -->
-                <div *ngIf="offeredAnswer.remarkAnswer" class="col-12">
-                  <input type="text" name="offeredAnswer.id+'remark'" />
+              <div class="col">
+                <div class="form-check">
+                  <!-- radio button -->
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="offeredAnswer.id"
+                  />
+                  <label class="form-check-label" for="offeredAnswer.id">
+                    {{ offeredAnswer.value }}</label
+                  >
+                  <!-- remarks -->
+                  <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="offeredAnswer.id+'remark'"
+                      placeholder="insert your remark"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -59,20 +77,34 @@
             <!-- offeredAnswers -->
             <div
               class="row"
-              *ngFor="let offeredAnswer of element.question?.offeredAnswers"
+              *ngFor="
+                let offeredAnswer of element.question?.offeredAnswers;
+                last as isLast
+              "
               cdkDrag
             >
               <div class="col">
-                <input type="checkbox" name="offeredAnswer.id" />
-                <label for="offeredAnswer.id"> {{ offeredAnswer.value }}</label>
+                <div class="form-check">
+                  <!-- radio button -->
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="offeredAnswer.id"
+                  />
+                  <label class="form-check-label" for="offeredAnswer.id">
+                    {{ offeredAnswer.value }}</label
+                  >
+                  <!-- remarks -->
+                  <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="offeredAnswer.id+'remark'"
+                      placeholder="insert your remark"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            <!-- otherAnswers -->
-            <div class="col">
-              <input type="checkbox" name="element.question?.otherAnswer" />
-              <label for="element.question?.otherAnswer">
-                other: <input type="text"
-              /></label>
             </div>
           </div>
         </div>

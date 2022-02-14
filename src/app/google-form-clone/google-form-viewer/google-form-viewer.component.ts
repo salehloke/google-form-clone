@@ -88,9 +88,6 @@ export class GoogleFormViewerComponent implements OnInit {
           remarkAnswerValue: 'idk',
         },
       ],
-      // otherAnswerId: '003',
-      // otherAnswer: true,
-      // otherAnswerValue: 'random text here as an answer',
     },
   };
 

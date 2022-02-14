@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -11,5 +11,6 @@ const COMPONENTS = [GoogleFormCloneMainComponent, GoogleFormViewerComponent];
   imports: [CommonModule, DragDropModule],
   exports: [COMPONENTS],
   declarations: [COMPONENTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GoogleFormCloneModule {}

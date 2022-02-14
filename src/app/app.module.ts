@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -10,6 +10,7 @@ import { GoogleFormCloneModule } from './google-form-clone/google-form-clone.mod
 @NgModule({
   imports: [BrowserModule, FormsModule, DragDropModule, GoogleFormCloneModule],
   declarations: [AppComponent, HelloComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

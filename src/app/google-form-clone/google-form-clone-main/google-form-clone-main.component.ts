@@ -5,4 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './google-form-clone-main.component.html',
   styleUrls: ['./google-form-clone-main.component.css'],
 })
-export class GoogleFormCloneMainComponent {}
+export class GoogleFormCloneMainComponent {
+  active = 1;
+}

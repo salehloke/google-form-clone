@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { questionModel } from '../.././models/question.model';
 
 @Component({
-  selector: 'google-form-viewer',
+  selector: 'google-form-clone-viewer',
   templateUrl: './google-form-viewer.component.html',
   styleUrls: ['./google-form-viewer.component.css'],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],

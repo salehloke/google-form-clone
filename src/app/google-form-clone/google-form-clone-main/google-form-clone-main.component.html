@@ -3,13 +3,13 @@
     <ng-container ngbNavItem>
       <a ngbNavLink> Builder </a>
       <ng-template ngbNavContent>
-        <google-form-clone-viewer></google-form-clone-viewer>
+        <google-form-builder [question]="questions"></google-form-builder>
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>
       <a ngbNavLink>Viewer</a>
       <ng-template ngbNavContent>
-        <p>Coming soon</p>
+        <google-form-clone-viewer></google-form-clone-viewer>
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>

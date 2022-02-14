@@ -7,4 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoogleFormCloneMainComponent {
   active = 1;
+  questions = ['test'];
 }

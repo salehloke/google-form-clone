@@ -11,6 +11,7 @@ import { GoogleFormViewerComponent } from './google-form-viewer/google-form-view
 import { GoogleFormBuilderComponent } from './google-form-builder/google-form-builder.component';
 import { GoogleFormCloneModelComponent } from './google-form-clone-model/google-form-clone-model.component';
 import { FormQuestionComponent } from './form-question/form-question.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   GoogleFormCloneMainComponent,
@@ -27,6 +28,8 @@ const COMPONENTS = [
     NgbModule,
     BrowserModule,
     MatSlideToggleModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [COMPONENTS],
   declarations: [COMPONENTS],

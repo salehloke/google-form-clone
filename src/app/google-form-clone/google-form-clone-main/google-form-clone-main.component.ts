@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { questionModel } from '../../models/question.model';
 
 @Component({
@@ -6,8 +7,14 @@ import { questionModel } from '../../models/question.model';
   templateUrl: './google-form-clone-main.component.html',
   styleUrls: ['./google-form-clone-main.component.css'],
 })
-export class GoogleFormCloneMainComponent {
+export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
+
+  constructor(formBuilder: FormBuilder) {}
+
+  ngOnInit() {}
+
+  freeTextFormGroup = this.formBuilder.group({});
 
   freeTextQuestion: questionModel = {
     id: 'q1',

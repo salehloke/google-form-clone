@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'form-question',
@@ -8,9 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormQuestionComponent implements OnInit {
   @Input() elementModel;
+  @Input() parentForm?: FormGroup;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.elementModel);
+  }
 
   dropRadioAnswer(event: CdkDragDrop<string[]>) {
     moveItemInArray(

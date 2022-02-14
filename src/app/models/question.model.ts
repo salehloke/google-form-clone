@@ -11,6 +11,8 @@ export interface questionModel {
       id?: string;
       orderNo: number;
       value: string;
+      remarkAnswer?: boolean;
+      remarkAnswerValue?: string;
     }[];
     otherAnswer?: boolean;
     otherAnswerValue?: string;

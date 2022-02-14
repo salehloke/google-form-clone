@@ -10,12 +10,14 @@ import { GoogleFormCloneMainComponent } from './google-form-clone-main/google-fo
 import { GoogleFormViewerComponent } from './google-form-viewer/google-form-viewer.component';
 import { GoogleFormBuilderComponent } from './google-form-builder/google-form-builder.component';
 import { GoogleFormCloneModelComponent } from './google-form-clone-model/google-form-clone-model.component';
+import { FormQuestionComponent } from './form-question/form-question.component';
 
 const COMPONENTS = [
   GoogleFormCloneMainComponent,
   GoogleFormViewerComponent,
   GoogleFormBuilderComponent,
   GoogleFormCloneModelComponent,
+  FormQuestionComponent,
 ];
 
 @NgModule({

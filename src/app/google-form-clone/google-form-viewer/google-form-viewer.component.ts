@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { questionModel } from '../.././models/question.model';
 
 @Component({
-  selector: 'app-google-form-viewer',
+  selector: 'google-form-viewer',
   templateUrl: './google-form-viewer.component.html',
   styleUrls: ['./google-form-viewer.component.css'],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -12,9 +12,7 @@ import { questionModel } from '../.././models/question.model';
 export class GoogleFormViewerComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(){
-    
-  }
+  ngOnInit() {}
 
   freeTextQuestion: questionModel = {
     orderNo: 1,

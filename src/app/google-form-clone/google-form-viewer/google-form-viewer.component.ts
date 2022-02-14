@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 import { questionModel } from '../.././models/question.model';
 
@@ -10,11 +10,21 @@ import { questionModel } from '../.././models/question.model';
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GoogleFormViewerComponent implements OnInit {
+  numberOfClicks = 0;
+  // @HostListener('click', ['$event.target'])
+  // onClick(btn) {
+  //   console.log('ele', btn, 'number of clicks:', this.numberOfClicks++);
+  // }
+  onCardClick(element, event) {
+    let test = event.srcElement as HTMLDivElement;
+    console.log(element, test);
+  }
   constructor() {}
 
   ngOnInit() {}
 
   freeTextQuestion: questionModel = {
+    id: 'q1',
     orderNo: 1,
     type: 'question',
     required: true,
@@ -26,6 +36,7 @@ export class GoogleFormViewerComponent implements OnInit {
   };
 
   radioQuestion = {
+    id: 'q2',
     orderNo: 2,
     type: 'question',
     required: false,
@@ -59,6 +70,7 @@ export class GoogleFormViewerComponent implements OnInit {
   };
 
   checkboxQuestion = {
+    id: 'q3',
     orderNo: 3,
     type: 'question',
     required: false,

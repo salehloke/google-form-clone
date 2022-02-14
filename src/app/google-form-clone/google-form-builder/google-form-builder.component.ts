@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { FormArray } from '@angular/forms';
 
 import { questionModel } from '../.././models/question.model';
 
@@ -10,6 +11,7 @@ import { questionModel } from '../.././models/question.model';
 })
 export class GoogleFormBuilderComponent implements OnInit {
   @Input() parentQuestions: questionModel[];
+  @Input() parentForm: FormArray;
 
   numberOfClicks = 0;
   // @HostListener('click', ['$event.target'])

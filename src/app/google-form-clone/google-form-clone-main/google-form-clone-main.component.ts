@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { questionModel } from '../../models/question.model';
 
 @Component({
@@ -9,14 +9,59 @@ import { questionModel } from '../../models/question.model';
 })
 export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
+  questionFormArray: FormArray;
 
-  constructor(fb: FormBuilder) {}
+  constructor(public fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let freeTextFormGroup = this.fb.group({
+      id: ['q1'],
+      orderNo: [1],
+      type: ['question'],
+      required: [true],
+      question: this.fb.group({
+        text: ['What is your favourite fruit?'],
+        placeholder: ['e.g Apple, Tomato, etc'],
+        type: ['freeText'],
+      }),
+    });
 
-  freeTextFormGroup = this.fb.group({
-    id: [],
-  });
+    let radioFormGroup = this.fb.group({
+      id: ['q1'],
+      orderNo: [1],
+      type: ['question'],
+      required: [true],
+      question: this.fb.group({
+        text: ['Radio Question'],
+        type: ['radio'],
+        offeredAnswers: this.fb.array([
+          {
+            id: ['01'],
+            orderNo: [1],
+            value: ['first Answer'],
+            remarkAnswer: [true],
+            remarkAnswerValue: ['idk'],
+          },
+          {
+            id: ['02'],
+            orderNo: [2],
+            value: ['second Answer'],
+            remarkAnswer: [false],
+            remarkAnswerValue: ['idk'],
+          },
+          {
+            id: ['03'],
+            orderNo: [3],
+            value: ['third Answer'],
+            remarkAnswer: [false],
+            remarkAnswerValue: ['idk'],
+          },
+        ]),
+      }),
+    });
+    this.questionFormArray = this.fb.array([freeTextFormGroup, radioFormGroup]);
+    console.log(freeTextFormGroup, radioFormGroup);
+  }
 
   freeTextQuestion: questionModel = {
     id: 'q1',

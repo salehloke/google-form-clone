@@ -9,7 +9,7 @@
   class="container mt-3"
   (cdkDropListDropped)="dropCardElement($event)"
 >
-  <div class="myDiv" *ngFor="let element of cardElements" cdkDrag>
+  <div class="myDiv" *ngFor="let element of parentQuestions" cdkDrag>
     <!-- Question card -->
     <div
       [id]="element.id"

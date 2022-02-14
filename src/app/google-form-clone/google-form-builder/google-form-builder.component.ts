@@ -9,7 +9,7 @@ import { questionModel } from '../.././models/question.model';
   styleUrls: ['./google-form-builder.component.scss'],
 })
 export class GoogleFormBuilderComponent implements OnInit {
-  @Input() questions: any[];
+  @Input() parentQuestions: questionModel[];
 
   numberOfClicks = 0;
   // @HostListener('click', ['$event.target'])
@@ -23,7 +23,7 @@ export class GoogleFormBuilderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('question', this.questions);
+    console.log('question', this.parentQuestions);
   }
 
   freeTextQuestion: questionModel = {
@@ -122,6 +122,10 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   dropCardElement(event: CdkDragDrop<string[]>) {
     console.log(this.cardElements);
-    moveItemInArray(this.cardElements, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.parentQuestions,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

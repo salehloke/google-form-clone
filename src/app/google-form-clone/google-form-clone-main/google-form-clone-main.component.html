@@ -3,7 +3,9 @@
     <ng-container ngbNavItem>
       <a ngbNavLink> Builder </a>
       <ng-template ngbNavContent>
-        <google-form-builder [question]="questions"></google-form-builder>
+        <google-form-builder
+          [parentQuestions]="cardElements"
+        ></google-form-builder>
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>

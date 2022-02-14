@@ -9,11 +9,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { GoogleFormCloneMainComponent } from './google-form-clone-main/google-form-clone-main.component';
 import { GoogleFormViewerComponent } from './google-form-viewer/google-form-viewer.component';
 import { GoogleFormBuilderComponent } from './google-form-builder/google-form-builder.component';
+import { GoogleFormCloneModelComponent } from './google-form-clone-model/google-form-clone-model.component';
 
 const COMPONENTS = [
   GoogleFormCloneMainComponent,
   GoogleFormViewerComponent,
   GoogleFormBuilderComponent,
+  GoogleFormCloneModelComponent,
 ];
 
 @NgModule({

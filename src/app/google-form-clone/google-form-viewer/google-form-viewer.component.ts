@@ -6,7 +6,7 @@ import { questionModel } from '../.././models/question.model';
 @Component({
   selector: 'google-form-clone-viewer',
   templateUrl: './google-form-viewer.component.html',
-  styleUrls: ['./google-form-viewer.component.css'],
+  styleUrls: ['./google-form-viewer.component.scss'],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GoogleFormViewerComponent implements OnInit {

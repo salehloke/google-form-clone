@@ -1,5 +1,5 @@
 <!-- title card -->
-<div #title class="card p-2" cdkDrag>
+<div #title class="card p-2 m-2" cdkDrag>
   <h1>Dynamic form samples</h1>
   <!-- <i class="material-icons">add</i> -->
 </div>
@@ -9,106 +9,109 @@
   (cdkDropListDropped)="dropCardElement($event)"
 >
   <div class="myDiv" *ngFor="let element of cardElements" cdkDrag>
-    <div class="card p-2 mt-3 draggable">
+    <div class="card mt-3 draggable callout callout-info p-0">
+      <!-- drag handle -->
       <div class="text-center p-0 m-0">
-        <i class="material-icons text-center p-0 m-0">drag_handle</i>
+        <i class="material-icons text-center p-0 m-0 text-muted">drag_handle</i>
       </div>
-      <!-- question label  -->
-      <label class="form-label">
-        {{ element.question.text }}
-        <span *ngIf="element.required">*</span>
-      </label>
-      <div [ngSwitch]="element.question.type">
-        <!-- FREE TEXT  -->
-        <div *ngSwitchCase="'freeText'">
-          <div class="row">
-            <div class="col-6">
-              <input
-                class="form-control"
-                *ngIf="element.question.type === 'freeText'"
-                type="text"
-                [placeholder]="freeTextQuestion.question.placeholder"
-              />
+      <div class="p-4 pt-0">
+        <!-- question label  -->
+        <label class="form-label">
+          {{ element.question.text }}
+          <span *ngIf="element.required">*</span>
+        </label>
+        <div [ngSwitch]="element.question.type">
+          <!-- FREE TEXT  -->
+          <div *ngSwitchCase="'freeText'">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  class="form-control"
+                  *ngIf="element.question.type === 'freeText'"
+                  type="text"
+                  [placeholder]="freeTextQuestion.question.placeholder"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <!-- END OF FREE TEXT -->
-        <!-- RADIO  -->
-        <div *ngSwitchCase="'radio'">
-          <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
-            <!-- offeredAnswers -->
-            <div
-              class="row"
-              *ngFor="
-                let offeredAnswer of element.question?.offeredAnswers;
-                last as isLast
-              "
-              cdkDrag
-            >
-              <div class="col">
-                <div class="form-check">
-                  <!-- radio button -->
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="offeredAnswer.id"
-                  />
-                  <label class="form-check-label" for="offeredAnswer.id">
-                    {{ offeredAnswer.value }}</label
-                  >
-                  <!-- remarks -->
-                  <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+          <!-- END OF FREE TEXT -->
+          <!-- RADIO  -->
+          <div *ngSwitchCase="'radio'">
+            <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
+              <!-- offeredAnswers -->
+              <div
+                class="row"
+                *ngFor="
+                  let offeredAnswer of element.question?.offeredAnswers;
+                  last as isLast
+                "
+                cdkDrag
+              >
+                <div class="col">
+                  <div class="form-check">
+                    <!-- radio button -->
                     <input
-                      class="form-control"
-                      type="text"
-                      name="offeredAnswer.id+'remark'"
-                      placeholder="insert your remark"
+                      class="form-check-input"
+                      type="radio"
+                      name="offeredAnswer.id"
                     />
+                    <label class="form-check-label" for="offeredAnswer.id">
+                      {{ offeredAnswer.value }}</label
+                    >
+                    <!-- remarks -->
+                    <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="offeredAnswer.id+'remark'"
+                        placeholder="insert your remark"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- END OF RADIO  -->
-        <!-- CHECKBOX  -->
-        <div *ngSwitchCase="'checkbox'">
-          <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
-            <!-- offeredAnswers -->
-            <div
-              class="row"
-              *ngFor="
-                let offeredAnswer of element.question?.offeredAnswers;
-                last as isLast
-              "
-              cdkDrag
-            >
-              <div class="col">
-                <div class="form-check">
-                  <!-- radio button -->
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="offeredAnswer.id"
-                  />
-                  <label class="form-check-label" for="offeredAnswer.id">
-                    {{ offeredAnswer.value }}</label
-                  >
-                  <!-- remarks -->
-                  <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+          <!-- END OF RADIO  -->
+          <!-- CHECKBOX  -->
+          <div *ngSwitchCase="'checkbox'">
+            <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
+              <!-- offeredAnswers -->
+              <div
+                class="row"
+                *ngFor="
+                  let offeredAnswer of element.question?.offeredAnswers;
+                  last as isLast
+                "
+                cdkDrag
+              >
+                <div class="col">
+                  <div class="form-check">
+                    <!-- radio button -->
                     <input
-                      class="form-control"
-                      type="text"
-                      name="offeredAnswer.id+'remark'"
-                      placeholder="insert your remark"
+                      class="form-check-input"
+                      type="radio"
+                      name="offeredAnswer.id"
                     />
+                    <label class="form-check-label" for="offeredAnswer.id">
+                      {{ offeredAnswer.value }}</label
+                    >
+                    <!-- remarks -->
+                    <div *ngIf="offeredAnswer.remarkAnswer" class="col">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="offeredAnswer.id+'remark'"
+                        placeholder="insert your remark"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- END OF CHECKBOX -->
         </div>
-        <!-- END OF CHECKBOX -->
       </div>
     </div>
   </div>

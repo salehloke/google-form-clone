@@ -38,6 +38,15 @@
 }
 
 .draggable {
+  display: block;
   cursor: move;
   z-index: 10;
+}
+
+.hide {
+  display: none;
+}
+
+.draggable:hover + .hide {
+  display: block;
 }

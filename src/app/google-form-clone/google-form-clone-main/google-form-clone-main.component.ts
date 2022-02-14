@@ -10,11 +10,13 @@ import { questionModel } from '../../models/question.model';
 export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
 
-  constructor(formBuilder: FormBuilder) {}
+  constructor(fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  freeTextFormGroup = this.formBuilder.group({});
+  freeTextFormGroup = this.fb.group({
+    id: [],
+  });
 
   freeTextQuestion: questionModel = {
     id: 'q1',

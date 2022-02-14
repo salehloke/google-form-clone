@@ -16,6 +16,8 @@ import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav.module';
     DragDropModule,
     GoogleFormCloneModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [AppComponent, HelloComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

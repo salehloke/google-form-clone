@@ -8,8 +8,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GoogleFormCloneModule } from './google-form-clone/google-form-clone.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, DragDropModule],
-  declarations: [AppComponent, HelloComponent, GoogleFormCloneModule],
+  imports: [BrowserModule, FormsModule, DragDropModule, GoogleFormCloneModule],
+  declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

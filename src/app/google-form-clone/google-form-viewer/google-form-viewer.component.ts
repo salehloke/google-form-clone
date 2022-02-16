@@ -1,7 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, HostListener, OnInit } from '@angular/core';
-
-import { questionModel } from '../.././models/question.model';
+import { questionModel } from '../../shared/models/question.model';
 
 @Component({
   selector: 'google-form-clone-viewer',

@@ -1,8 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormArray } from '@angular/forms';
-
-import { questionModel } from '../.././models/question.model';
+import { questionModel } from '../../shared/models/question.model';
 
 @Component({
   selector: 'google-form-builder',

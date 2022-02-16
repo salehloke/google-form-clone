@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { questionModel } from '../../models/question.model';
+import { questionModel } from '../../shared/models/question.model';
 
 @Component({
   selector: 'google-form-clone-main',

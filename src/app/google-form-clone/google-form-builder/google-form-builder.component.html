@@ -10,32 +10,34 @@
   class="container mt-3"
   (cdkDropListDropped)="dropCardElement($event)"
 >
-  <div
-    formArrayName="questionList"
-    class="myDiv"
-    *ngFor="
-      let element of mainForm.get('questionList')['controls'];
-      let i = index
-    "
-    cdkDrag
-  >
-    <!-- Question card -->
+  <div >
     <div
-      (click)="onCardClick(element, $event)"
-      class="card row mt-3 draggable callout callout-info p-0"
+      formArrayName="questionList"
+      class="myDiv"
+      *ngFor="
+        let element of mainForm.get('questionList')['controls'];
+        let i = index
+      "
+      cdkDrag
     >
-      <div class="row">
-        <!-- drag handle -->
-        <div class="text-center draggable p-0 m-0">
-          <i class="material-icons p-0 m-0 text-muted">drag_handle</i>
-        </div>
+      <!-- Question card -->
+      <div
+        (click)="onCardClick(element, $event)"
+        class="card row mt-3 draggable callout callout-info p-0"
+      >
+        <div class="row">
+          <!-- drag handle -->
+          <div class="text-center draggable p-0 m-0">
+            <i class="material-icons p-0 m-0 text-muted">drag_handle</i>
+          </div>
 
-        <form-question
-          [questionIndex]="i"
-          [elementModel]="element"
-        ></form-question>
+          <form-question
+            [questionIndex]="i"
+            [elementModel]="element"
+          ></form-question>
+        </div>
       </div>
+      <!-- end of question card -->
     </div>
-    <!-- end of question card -->
   </div>
 </div>

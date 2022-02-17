@@ -17,6 +17,10 @@ export class FormQuestionComponent implements OnInit {
     console.log(this.elementModel);
   }
 
+  addNewQuestion() {
+    console.log('add');
+  }
+
   dropRadioAnswer(event: CdkDragDrop<string[]>) {
     moveItemInArray(
       this.elementModel.question.offeredAnswers,

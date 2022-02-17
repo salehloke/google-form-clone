@@ -1,9 +1,24 @@
 <div class="p-4 pt-0 pb-2">
   <!-- question label  -->
-  <label class="form-label">
-    {{ elementModel.question.text }}
-    <span *ngIf="elementModel.required">*</span>
-  </label>
+  <div>
+    <div class="d-flex justify-content-between">
+      <div>
+        <label class="form-label col">
+          {{ elementModel.question.text }}
+          <span *ngIf="elementModel.required">*</span>
+        </label>
+      </div>
+      <div>
+        <select class="form-select">
+          <option value="singleSelection">Single Selection</option>
+          <option value="multipleSelection">Multiple Selection</option>
+          <option selected value="openQuestion">Open Question</option>
+          <option selected value="titleQuestion">Title Question</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
   <div [ngSwitch]="elementModel.question.type">
     <!-- FREE TEXT  -->
     <div *ngSwitchCase="'freeText'">

@@ -21,6 +21,7 @@ export class GoogleFormBuilderComponent implements OnInit {
     let test = event.srcElement as HTMLDivElement;
     console.log(element, test);
   }
+
   constructor() {}
 
   ngOnInit() {

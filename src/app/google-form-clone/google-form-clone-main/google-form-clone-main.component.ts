@@ -9,7 +9,7 @@ import { questionModel } from '../../shared/models/question.model';
 })
 export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
-  questionFormArray: FormArray;
+  mainForm: FormGroup;
 
   constructor(public fb: FormBuilder) {}
 
@@ -59,7 +59,9 @@ export class GoogleFormCloneMainComponent implements OnInit {
         ]),
       }),
     });
-    this.questionFormArray = this.fb.array([freeTextFormGroup, radioFormGroup]);
+    this.mainForm = this.fb.group({
+      questionList: this.fb.array([freeTextFormGroup, radioFormGroup]),
+    });
     console.log(freeTextFormGroup, radioFormGroup);
   }
 
@@ -142,10 +144,4 @@ export class GoogleFormCloneMainComponent implements OnInit {
       ],
     },
   };
-
-  cardElements = [
-    this.freeTextQuestion,
-    this.radioQuestion,
-    this.checkboxQuestion,
-  ];
 }

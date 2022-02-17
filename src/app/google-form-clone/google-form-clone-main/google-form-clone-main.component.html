@@ -3,10 +3,9 @@
     <ng-container ngbNavItem>
       <a ngbNavLink> Builder </a>
       <ng-template ngbNavContent>
-        <google-form-builder
-          [parentQuestions]="cardElements"
-          [parentForm]="questionFormArray"
-        ></google-form-builder>
+        <div [formGroup]="mainForm">
+          <google-form-builder [mainForm]="mainForm"></google-form-builder>
+        </div>
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>
@@ -19,7 +18,7 @@
       <a ngbNavLink>Model</a>
       <ng-template ngbNavContent>
         <google-form-clone-model
-          [parentQuestions]="cardElements"
+          [parentQuestions]="mainForm"
         ></google-form-clone-model>
       </ng-template>
     </ng-container>

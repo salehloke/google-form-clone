@@ -10,6 +10,7 @@ import { FormGroup } from '@angular/forms';
 export class FormQuestionComponent implements OnInit {
   @Input() elementModel;
   @Input() parentForm?: FormGroup;
+  @Input() questionIndex: number;
 
   constructor() {}
 

@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'form-question',
@@ -9,12 +9,13 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormQuestionComponent implements OnInit {
   @Input() elementModel;
-  @Input() parentForm?: FormGroup;
+  @Input() questionForm?: FormGroup;
   @Input() questionIndex: number;
 
-  constructor() {}
+  constructor(public rootFormGroup: FormGroupDirective) {}
 
   ngOnInit() {
+    this.questionForm = this.rootFormGroup.control 
     console.log(this.elementModel);
   }
 

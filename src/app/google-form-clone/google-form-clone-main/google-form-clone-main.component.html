@@ -4,7 +4,9 @@
       <a ngbNavLink> Builder </a>
       <ng-template ngbNavContent>
         <div [formGroup]="mainForm">
-          <google-form-builder [mainForm]="mainForm"></google-form-builder>
+          <form [formGroup]="mainForm">
+            <google-form-builder [mainForm]="mainForm"></google-form-builder>
+          </form>
         </div>
       </ng-template>
     </ng-container>

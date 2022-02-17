@@ -10,14 +10,11 @@
   class="container mt-3"
   (cdkDropListDropped)="dropCardElement($event)"
 >
-  <div >
+  <div>
     <div
       formArrayName="questionList"
       class="myDiv"
-      *ngFor="
-        let element of mainForm.get('questionList')['controls'];
-        let i = index
-      "
+      *ngFor="let element of questionList; let i = index"
       cdkDrag
     >
       <!-- Question card -->
@@ -32,8 +29,8 @@
           </div>
 
           <form-question
+            [questionFormGroup]="element"
             [questionIndex]="i"
-            [elementModel]="element"
           ></form-question>
         </div>
       </div>

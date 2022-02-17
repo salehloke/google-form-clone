@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between">
       <div>
         <label class="form-label col">
-          {{ elementModel.question.text }}
-          <span *ngIf="elementModel.required">*</span>
+          {{ questionFormGroup.question.text }}
+          <span *ngIf="questionFormGroup.required">*</span>
         </label>
       </div>
       <div>
@@ -19,16 +19,16 @@
     </div>
   </div>
 
-  <div [ngSwitch]="elementModel.question.type">
+  <div [ngSwitch]="questionFormGroup.question.type">
     <!-- FREE TEXT  -->
     <div *ngSwitchCase="'freeText'">
       <div class="row">
         <div class="col-6">
           <input
             class="form-control"
-            *ngIf="elementModel.question.type === 'freeText'"
+            *ngIf="questionFormGroup.question.type === 'freeText'"
             type="text"
-            [placeholder]="elementModel.question.placeholder"
+            [placeholder]="questionFormGroup.question.placeholder"
           />
         </div>
       </div>
@@ -41,7 +41,7 @@
         <div
           class="row"
           *ngFor="
-            let offeredAnswer of elementModel.question?.offeredAnswers;
+            let offeredAnswer of questionFormGroup.question?.offeredAnswers;
             last as isLast
           "
           cdkDrag
@@ -83,7 +83,7 @@
         <div
           class="row"
           *ngFor="
-            let offeredAnswer of elementModel.question?.offeredAnswers;
+            let offeredAnswer of questionFormGroup.question?.offeredAnswers;
             last as isLast
           "
           cdkDrag

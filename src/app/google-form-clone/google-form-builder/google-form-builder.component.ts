@@ -17,7 +17,7 @@ export class GoogleFormBuilderComponent implements OnInit {
   @Input() mainForm!: FormGroup;
 
   get questionList() {
-    return this.mainForm.get('questionLiist') as FormArray;
+    return this.mainForm.get('questionList') as FormArray;
   }
   numberOfClicks = 0;
   // @HostListener('click', ['$event.target'])

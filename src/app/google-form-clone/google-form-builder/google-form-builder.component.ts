@@ -28,7 +28,8 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   ngOnInit() {
     this.mainForm = this.rootFormGroup.control;
-    console.log('mainForm', this.questionListArray[0].controls);
+    console.log('mainForm', this.questionListArray);
+    this.mainForm.valueChanges.subscribe((value) => console.log(value));
     // console.log('mainForm', this.mainForm.get('questionList')['controls']);
   }
 

@@ -14,7 +14,15 @@ export class FormQuestionComponent implements OnInit {
   constructor(public rootFormGroup: FormGroupDirective) {}
 
   ngOnInit() {
-    console.log('questionFormGroup', this.questionFormGroup);
+    console.log(
+      'questionFormGroup',
+      this.questionFormGroup.get('question.text')
+    );
+    this.questionFormGroup
+      .get('question.text')
+      .valueChanges.subscribe((value) => {
+        console.log(value);
+      });
   }
 
   addNewQuestion() {
@@ -25,4 +33,7 @@ export class FormQuestionComponent implements OnInit {
     moveItemInArray([], event.previousIndex, event.currentIndex);
   }
 
+  // get questionDetails() {
+  //   return this.questionFormGroup.question.controls;
+  // }
 }

@@ -1,5 +1,4 @@
-<div [formGroup]="questionFormGroup" class="p-4 pt-0 pb-2">
-  <!-- question label  -->
+<!-- <div [formGroup]="questionFormGroup" class="p-4 pt-0 pb-2">
   <div>
     <div class="d-flex justify-content-between">
       <div>
@@ -19,8 +18,7 @@
     </div>
   </div>
 
-  <div [ngSwitch]="currentEle.question.type">
-    <!-- FREE TEXT  -->
+  <div [ngSwitch]="questionFormGroup.question.type">
     <div *ngSwitchCase="'freeText'">
       <div class="row">
         <div class="col-6">
@@ -33,11 +31,8 @@
         </div>
       </div>
     </div>
-    <!-- END OF FREE TEXT -->
-    <!-- RADIO  -->
     <div *ngSwitchCase="'radio'">
       <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
-        <!-- offeredAnswers -->
         <div
           class="row"
           *ngFor="
@@ -47,12 +42,10 @@
           cdkDrag
         >
           <div class="col-1">
-            <!-- TODO: change icon -->
             <i class="material-icons text-muted">drag_indicator</i>
           </div>
           <div class="col">
             <div class="form-check">
-              <!-- radio button -->
               <input
                 class="form-check-input"
                 type="radio"
@@ -61,7 +54,6 @@
               <label class="form-check-label" for="offeredAnswer.id">
                 {{ offeredAnswer.value }}</label
               >
-              <!-- remarks -->
               <div *ngIf="offeredAnswer.remarkAnswer" class="col">
                 <input
                   class="form-control"
@@ -75,11 +67,8 @@
         </div>
       </div>
     </div>
-    <!-- END OF RADIO  -->
-    <!-- CHECKBOX  -->
     <div *ngSwitchCase="'checkbox'">
       <div cdkDropList (cdkDropListDropped)="dropRadioAnswer($event)">
-        <!-- offeredAnswers -->
         <div
           class="row"
           *ngFor="
@@ -89,12 +78,10 @@
           cdkDrag
         >
           <div class="col-1">
-            <!-- TODO: change icon -->
             <i class="material-icons text-muted">drag_indicator</i>
           </div>
           <div class="col">
             <div class="form-check">
-              <!-- radio button -->
               <input
                 class="form-check-input"
                 type="radio"
@@ -103,7 +90,6 @@
               <label class="form-check-label" for="offeredAnswer.id">
                 {{ offeredAnswer.value }}</label
               >
-              <!-- remarks -->
               <div *ngIf="offeredAnswer.remarkAnswer" class="col">
                 <input
                   class="form-control"
@@ -117,10 +103,8 @@
         </div>
       </div>
     </div>
-    <!-- END OF CHECKBOX -->
   </div>
   <hr />
-  <!-- action row -->
   <div class="d-flex flex-row-reverse">
     <div class="material-icons p-2 pt-0">delete</div>
     <div class="material-icons p-3 pt-0">file_copy</div>
@@ -128,6 +112,17 @@
       <input class="form-check-input" type="checkbox" name="isRequired" />
       <label class="form-check-label" for="isRequired"> mandatory</label>
     </div>
-    <!-- end of action row -->
+  </div>
+</div> -->
+
+<div [formGroup]="questionFormGroup">
+  <div formGroupName="question">
+    <input class="form-control" type="text" />
+    <select formControlName="type" class="form-select">
+      <option value="singleSelection">Single Selection</option>
+      <option value="multipleSelection">Multiple Selection</option>
+      <option selected value="openQuestion">Open Question</option>
+      <option selected value="titleQuestion">Title Question</option>
+    </select>
   </div>
 </div>

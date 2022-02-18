@@ -7,7 +7,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./google-form-clone-model.component.css'],
 })
 export class GoogleFormCloneModelComponent implements OnInit {
-  @Input() mainForm: FormGroup;
+  @Input() mainForm!: FormGroup;
   strValue: string;
 
   constructor(public rootFormGroup: FormGroupDirective) {}

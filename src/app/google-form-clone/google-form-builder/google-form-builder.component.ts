@@ -16,15 +16,10 @@ import { questionModel } from '../../shared/models/question.model';
 export class GoogleFormBuilderComponent implements OnInit {
   @Input() mainForm!: FormGroup;
 
-  get questionList() {
+  get questionListArray() {
     console.log('test');
     return this.mainForm.get('questionList') as FormArray;
   }
-  numberOfClicks = 0;
-  // @HostListener('click', ['$event.target'])
-  // onClick(btn) {
-  //   console.log('ele', btn, 'number of clicks:', this.numberOfClicks++);
-  // }
 
   onCardClick(element, event) {
     let test = event.srcElement as HTMLDivElement;
@@ -34,7 +29,7 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   ngOnInit() {
     this.mainForm = this.rootFormGroup.control;
-    console.log('question', this.mainForm.get('questionList')['controls']);
+    console.log('mainForm', this.mainForm.get('questionList')['controls']);
   }
 
   dropCardElement(event: CdkDragDrop<string[]>) {

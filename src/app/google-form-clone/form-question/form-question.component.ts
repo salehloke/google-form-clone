@@ -8,7 +8,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./form-question.component.css'],
 })
 export class FormQuestionComponent implements OnInit {
-  @Input() questionFormGroup?: FormGroup;
+  @Input() questionFormGroup?: any;
   @Input() questionIndex: number;
 
   constructor(public rootFormGroup: FormGroupDirective) {}

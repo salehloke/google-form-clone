@@ -14,10 +14,11 @@ export class FormQuestionComponent implements OnInit {
   constructor(public rootFormGroup: FormGroupDirective) {}
 
   ngOnInit() {
-    console.log(
-      'questionFormGroup',
-      this.questionFormGroup.get('question.text')
-    );
+    // console.log(
+    //   'questionFormGroup',
+    //   this.questionFormGroup.get('question.text')
+    // );
+    console.log('questionDetails', this.questionDetails);
     this.questionFormGroup
       .get('question.text')
       .valueChanges.subscribe((value) => {
@@ -33,7 +34,7 @@ export class FormQuestionComponent implements OnInit {
     moveItemInArray([], event.previousIndex, event.currentIndex);
   }
 
-  // get questionDetails() {
-  //   return this.questionFormGroup.question.controls;
-  // }
+  get questionDetails() {
+    return this.questionFormGroup.controls;
+  }
 }

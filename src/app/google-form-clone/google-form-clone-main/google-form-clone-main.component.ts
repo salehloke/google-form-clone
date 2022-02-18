@@ -37,7 +37,7 @@ export class GoogleFormCloneMainComponent implements OnInit {
       required: [true],
       question: this.fb.group({
         text: ['Radio Question'],
-        type: ['radio'],
+        type: ['singleSelection'],
         offeredAnswers: this.fb.array([
           {
             id: ['01'],

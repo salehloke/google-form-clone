@@ -115,14 +115,20 @@
   </div>
 </div> -->
 
-<div [formGroup]="questionFormGroup">
-  <div formGroupName="question">
-    <input class="form-control" type="text" />
-    <select formControlName="type" class="form-select">
+<div [formGroup]="questionFormGroup" class="pt-0 pb-2">
+  <div formGroupName="question" class="d-flex justify-content-around">
+    <!-- <input class="form-control m-2" formControlName="text" type="text" /> -->
+    <textarea formControlName="text" class="form-control m-2"></textarea>
+    <select formControlName="type" class="form-select m-2">
       <option value="singleSelection">Single Selection</option>
       <option value="multipleSelection">Multiple Selection</option>
-      <option selected value="openQuestion">Open Question</option>
-      <option selected value="titleQuestion">Title Question</option>
+      <option value="freeText">Open Question</option>
+      <option value="titleQuestion">Title Question</option>
     </select>
+  </div>
+  <div [ngSwitch]="questionDetails.type">
+    <div *ngSwitchCase="'freeText'">
+      <h1>test</h1>
+    </div>
   </div>
 </div>

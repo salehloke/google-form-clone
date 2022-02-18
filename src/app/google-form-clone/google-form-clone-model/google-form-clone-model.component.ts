@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'google-form-clone-model',
@@ -6,9 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./google-form-clone-model.component.css'],
 })
 export class GoogleFormCloneModelComponent implements OnInit {
-  @Input() parentQuestions;
+  @Input() mainForm: FormGroup;
 
-  constructor() {}
+  constructor(public rootFormGroup: FormGroupDirective) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mainForm = this.rootFormGroup.control;
+  }
 }

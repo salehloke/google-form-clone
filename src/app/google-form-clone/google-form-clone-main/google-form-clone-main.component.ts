@@ -38,6 +38,7 @@ export class GoogleFormCloneMainComponent implements OnInit {
       question: this.fb.group({
         text: ['Radio Question'],
         type: ['singleSelection'],
+        selectedAnswer: ['first Answer'],
         offeredAnswers: this.fb.array([
           {
             id: ['01'],
@@ -69,4 +70,5 @@ export class GoogleFormCloneMainComponent implements OnInit {
   }
 
   ngOnInit() {}
+
 }

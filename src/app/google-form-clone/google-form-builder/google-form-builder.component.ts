@@ -16,10 +16,6 @@ import { questionModel } from '../../shared/models/question.model';
 export class GoogleFormBuilderComponent implements OnInit {
   @Input() mainForm!: FormGroup;
 
-  get questionListArray() {
-    return this.mainForm.get('questionList')['controls'];
-  }
-
   onCardClick(element, event) {
     let test = event.srcElement as HTMLDivElement;
   }
@@ -40,5 +36,22 @@ export class GoogleFormBuilderComponent implements OnInit {
       event.previousIndex,
       event.currentIndex
     );
+  }
+
+  duplicateQuestion(i: number) {
+    console.log(this.questionList.at(i));
+  }
+
+  deleteQuestion(i: number) {
+    console.log(this.mainForm);
+    this.questionList.removeAt(i);
+  }
+
+  get questionListArray() {
+    return this.mainForm.get('questionList')['controls'];
+  }
+
+  get questionList() {
+    return this.mainForm.get('questionList') as FormArray;
   }
 }

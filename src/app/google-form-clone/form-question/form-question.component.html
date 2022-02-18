@@ -1,4 +1,4 @@
-<div [formGroupName]="questionIndex" class="p-4 pt-0 pb-2">
+<div [formGroup]="questionFormGroup" class="p-4 pt-0 pb-2">
   <!-- question label  -->
   <div>
     <div class="d-flex justify-content-between">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div [ngSwitch]="questionFormGroup.question.type">
+  <div [ngSwitch]="currentEle.question.type">
     <!-- FREE TEXT  -->
     <div *ngSwitchCase="'freeText'">
       <div class="row">

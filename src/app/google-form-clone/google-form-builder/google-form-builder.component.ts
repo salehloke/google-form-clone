@@ -17,8 +17,7 @@ export class GoogleFormBuilderComponent implements OnInit {
   @Input() mainForm!: FormGroup;
 
   get questionListArray() {
-    console.log('test');
-    return this.mainForm.get('questionList') as FormArray;
+    return this.mainForm.get('questionList')['controls'];
   }
 
   onCardClick(element, event) {
@@ -29,13 +28,14 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   ngOnInit() {
     this.mainForm = this.rootFormGroup.control;
-    console.log('mainForm', this.mainForm.get('questionList')['controls']);
+    console.log('mainForm', this.questionListArray[0].controls);
+    // console.log('mainForm', this.mainForm.get('questionList')['controls']);
   }
 
   dropCardElement(event: CdkDragDrop<string[]>) {
     console.log(this.mainForm);
     moveItemInArray(
-      this.mainForm.get('questionList').value,
+      this.questionListArray,
       event.previousIndex,
       event.currentIndex
     );

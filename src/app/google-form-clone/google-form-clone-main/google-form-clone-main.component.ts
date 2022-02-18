@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
+} from '@angular/forms';
 import { questionModel } from '../../shared/models/question.model';
 
 @Component({
   selector: 'google-form-clone-main',
   templateUrl: './google-form-clone-main.component.html',
   styleUrls: ['./google-form-clone-main.component.css'],
+  providers: [FormGroupDirective],
 })
 export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
   mainForm: FormGroup;
 
-  constructor(public fb: FormBuilder) {}
-
-  ngOnInit() {
+  constructor(public fb: FormBuilder) {
     let freeTextFormGroup = this.fb.group({
       id: ['q1'],
       orderNo: [1],
@@ -63,4 +67,6 @@ export class GoogleFormCloneMainComponent implements OnInit {
       questionList: this.fb.array([freeTextFormGroup, radioFormGroup]),
     });
   }
+
+  ngOnInit() {}
 }

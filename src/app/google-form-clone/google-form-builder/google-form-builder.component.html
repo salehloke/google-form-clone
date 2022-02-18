@@ -12,11 +12,9 @@
 >
   <div>
     <div
+      formArrayName="questionList"
       class="myDiv"
-      *ngFor="
-        let element of mainForm.get('questionList')['controls'];
-        let i = index
-      "
+      *ngFor="let element of questionListArray; let i = index"
       cdkDrag
     >
       <!-- Question card -->
@@ -29,7 +27,7 @@
           <div class="text-center draggable p-0 m-0">
             <i class="material-icons p-0 m-0 text-muted">drag_handle</i>
           </div>
-
+          <pre>{{ element.value | json }}</pre>
           <form-question
             [questionFormGroup]="element.controls"
             [questionIndex]="i"

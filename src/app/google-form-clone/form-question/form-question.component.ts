@@ -8,13 +8,12 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./form-question.component.css'],
 })
 export class FormQuestionComponent implements OnInit {
-  @Input() questionFormGroup?: any;
+  @Input() questionFormGroup!: FormGroup;
   @Input() questionIndex: number;
 
   constructor(public rootFormGroup: FormGroupDirective) {}
 
   ngOnInit() {
-    this.questionFormGroup = this.rootFormGroup.control;
     console.log('questionFormGroup', this.questionFormGroup);
   }
 
@@ -24,5 +23,9 @@ export class FormQuestionComponent implements OnInit {
 
   dropRadioAnswer(event: CdkDragDrop<string[]>) {
     moveItemInArray([], event.previousIndex, event.currentIndex);
+  }
+
+  get currentEle() {
+    return this.questionFormGroup.controls;
   }
 }

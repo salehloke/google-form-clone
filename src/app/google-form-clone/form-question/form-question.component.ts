@@ -25,7 +25,4 @@ export class FormQuestionComponent implements OnInit {
     moveItemInArray([], event.previousIndex, event.currentIndex);
   }
 
-  get currentEle() {
-    return this.questionFormGroup.controls;
-  }
 }

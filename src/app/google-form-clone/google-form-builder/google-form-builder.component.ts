@@ -1,5 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { _ } from 'lodash';
+import { ToastrService } from 'ngx-toastr';
 import {
   FormArray,
   FormBuilder,
@@ -16,35 +18,83 @@ import { questionModel } from '../../shared/models/question.model';
 export class GoogleFormBuilderComponent implements OnInit {
   @Input() mainForm!: FormGroup;
 
+  newTextFormGroup = this.fb.group({
+    id: ['q1'],
+    orderNo: [2],
+    type: ['question'],
+    required: [true],
+    question: this.fb.group({
+      text: [''],
+      placeholder: [''],
+      type: ['freeText'],
+      selectedAnswer: [''],
+      offeredAnswers: this.fb.array([]),
+    }),
+  });
+
   onCardClick(element, event) {
     let test = event.srcElement as HTMLDivElement;
   }
 
-  constructor(private rootFormGroup: FormGroupDirective) {}
+  constructor(
+    private fb: FormBuilder,
+    private rootFormGroup: FormGroupDirective,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit() {
     this.mainForm = this.rootFormGroup.control;
-    console.log('mainForm', this.questionListArray);
-    this.mainForm.valueChanges.subscribe((value) => console.log(value));
+    // console.log('mainForm', this.questionListArray);
+    // this.mainForm.valueChanges.subscribe((value) => console.log(value));
     // console.log('mainForm', this.mainForm.get('questionList')['controls']);
   }
 
   dropCardElement(event: CdkDragDrop<string[]>) {
-    console.log(this.mainForm);
     moveItemInArray(
       this.questionListArray,
       event.previousIndex,
       event.currentIndex
     );
+
+    // Update Order no in the form group
+    this.updateOrderNo();
+  }
+
+  async addNewQuestion(i: number, type: string) {
+    let questionList = this.mainForm.get('questionList') as FormArray;
+    questionList.insert(i + 1, this.newTextFormGroup);
+
+    // Update the order No
+    await this.updateOrderNo();
   }
 
   duplicateQuestion(i: number) {
-    console.log(this.questionList.at(i));
+    // Insert next to the parent question
+    let targetQ = this.questionList.at(i) as FormGroup;
+    // using lodash to create deep clone of a FormGroup object
+    let newFormGroup: FormGroup = _.cloneDeep(targetQ);
+    this.questionList.insert(i + 1, newFormGroup);
+    // Update the order No
+    this.updateOrderNo();
+
+    this.toastrService.info('Duplicate question');
   }
 
   deleteQuestion(i: number) {
-    console.log(this.mainForm);
+    // remove the target in form array
     this.questionList.removeAt(i);
+    this.updateOrderNo();
+  }
+
+  async updateOrderNo() {
+    // Update question order no after every Remove/ Add / duplicate
+    let questionList = this.mainForm.get('questionList')['controls'];
+    await questionList.forEach((question, index) => {
+      question.patchValue({
+        orderNo: index,
+      });
+      console.log(`q${index}`, question.value);
+    });
   }
 
   get questionListArray() {

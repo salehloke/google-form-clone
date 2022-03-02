@@ -4,23 +4,28 @@
   <h1>Dynamic form samples</h1>
   <!-- <i class="material-icons">add</i> -->
 </div>
-<div
-  cdkDropList
-  class="container card mt-3"
-  (cdkDropListDropped)="dropCardElement($event)"
->
-  <div class="myDiv" *ngFor="let element of cardElements" cdkDrag>
-    <!-- Question card -->
-    <div class="row mt-3 mb-3" [id]="element.id">
+<div [formGroup]="mainForm" class="container card mt-3">
+  <div
+    class="myDiv"
+    *ngFor="
+      let element of mainForm.get('questionList')['controls'];
+      let i = index
+    "
+  >
+    <app-question-viewer
+      [questionFormGroup]="element"
+      [questionIndex]="i"
+    ></app-question-viewer>
+
+    <!-- <pre>{{ element.value | json }}</pre> -->
+    <!-- <div class="row mt-3 mb-3" [id]="element.id">
       <div class="row">
         <div class="p-4 pt-0 pb-2">
-          <!-- question label  -->
           <h6 class="form-label">
             {{ element.question.text }}
             <span *ngIf="element.required">*</span>
           </h6>
           <div [ngSwitch]="element.question.type">
-            <!-- FREE TEXT  -->
             <div *ngSwitchCase="'freeText'">
               <div class="row">
                 <div class="col-6">
@@ -33,11 +38,8 @@
                 </div>
               </div>
             </div>
-            <!-- END OF FREE TEXT -->
-            <!-- RADIO  -->
             <div *ngSwitchCase="'radio'">
               <div>
-                <!-- offeredAnswers -->
                 <div
                   class="row"
                   *ngFor="
@@ -47,7 +49,6 @@
                 >
                   <div class="col">
                     <div class="form-check">
-                      <!-- radio button -->
                       <input
                         class="form-check-input"
                         type="radio"
@@ -56,7 +57,6 @@
                       <label class="form-check-label" for="offeredAnswer.id">
                         {{ offeredAnswer.value }}</label
                       >
-                      <!-- remarks -->
                       <div *ngIf="offeredAnswer.remarkAnswer" class="col">
                         <input
                           class="form-control"
@@ -70,11 +70,8 @@
                 </div>
               </div>
             </div>
-            <!-- END OF RADIO  -->
-            <!-- CHECKBOX  -->
             <div *ngSwitchCase="'checkbox'">
               <div>
-                <!-- offeredAnswers -->
                 <div
                   class="row"
                   *ngFor="
@@ -84,7 +81,6 @@
                 >
                   <div class="col">
                     <div class="form-check">
-                      <!-- radio button -->
                       <input
                         class="form-check-input"
                         type="radio"
@@ -93,7 +89,6 @@
                       <label class="form-check-label" for="offeredAnswer.id">
                         {{ offeredAnswer.value }}</label
                       >
-                      <!-- remarks -->
                       <div *ngIf="offeredAnswer.remarkAnswer" class="col">
                         <input
                           class="form-control"
@@ -107,11 +102,9 @@
                 </div>
               </div>
             </div>
-            <!-- END OF CHECKBOX -->
           </div>
         </div>
       </div>
-    </div>
-    <!-- end of question card -->
+    </div> -->
   </div>
 </div>

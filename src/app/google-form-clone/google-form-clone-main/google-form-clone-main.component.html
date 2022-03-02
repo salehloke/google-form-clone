@@ -13,7 +13,11 @@
     <ng-container ngbNavItem>
       <a ngbNavLink>Viewer</a>
       <ng-template ngbNavContent>
-        <google-form-clone-viewer></google-form-clone-viewer>
+        <form [formGroup]="mainForm">
+          <google-form-clone-viewer
+            [mainForm]="mainForm"
+          ></google-form-clone-viewer>
+        </form>
       </ng-template>
     </ng-container>
     <ng-container ngbNavItem>

@@ -12,6 +12,8 @@ import { GoogleFormBuilderComponent } from './google-form-builder/google-form-bu
 import { GoogleFormCloneModelComponent } from './google-form-clone-model/google-form-clone-model.component';
 import { FormQuestionComponent } from './form-question/form-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuestionViewerComponent } from './question-viewer/question-viewer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const COMPONENTS = [
   GoogleFormCloneMainComponent,
@@ -19,6 +21,7 @@ const COMPONENTS = [
   GoogleFormBuilderComponent,
   GoogleFormCloneModelComponent,
   FormQuestionComponent,
+  QuestionViewerComponent,
 ];
 
 @NgModule({
@@ -30,6 +33,11 @@ const COMPONENTS = [
     MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 15000, // 15 seconds
+      progressBar: true,
+    }),
   ],
   exports: [COMPONENTS],
   declarations: [COMPONENTS],

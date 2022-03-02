@@ -8,13 +8,12 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 })
 export class GoogleFormCloneModelComponent implements OnInit {
   @Input() mainForm!: FormGroup;
+
   strValue: string;
 
   constructor(public rootFormGroup: FormGroupDirective) {}
 
   ngOnInit() {
-    this.mainForm = this.rootFormGroup.control;
-    this.strValue = JSON.stringify(this.mainForm);
     console.log('mainForm', this.mainForm);
   }
 }

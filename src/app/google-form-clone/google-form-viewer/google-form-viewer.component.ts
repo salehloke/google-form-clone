@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { questionModel } from '../../shared/models/question.model';
 
 @Component({
@@ -9,18 +10,14 @@ import { questionModel } from '../../shared/models/question.model';
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GoogleFormViewerComponent implements OnInit {
+  @Input() mainForm: FormGroup;
   numberOfClicks = 0;
-  // @HostListener('click', ['$event.target'])
-  // onClick(btn) {
-  //   console.log('ele', btn, 'number of clicks:', this.numberOfClicks++);
-  // }
-  onCardClick(element, event) {
-    let test = event.srcElement as HTMLDivElement;
-    console.log(element, test);
-  }
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('viewer', this.mainForm.get('questionList')['controls']);
+  }
 
   freeTextQuestion: questionModel = {
     id: 'q1',

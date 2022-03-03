@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
-import { IQuestionFormGroup } from 'src/app/shared/models/question.model';
+import { IQuestionFormGroup } from '../../shared/models/question.model';
 
 @Component({
   selector: 'google-form-clone-main',

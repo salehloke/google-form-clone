@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
-import { questionModel } from '../../shared/models/question.model';
+import { IQuestionFormGroup } from 'src/app/shared/models/question.model';
 
 @Component({
   selector: 'google-form-clone-main',
@@ -19,7 +19,11 @@ export class GoogleFormCloneMainComponent implements OnInit {
 
   constructor(public fb: FormBuilder) {
     let freeTextFormGroup = this.fb.group({
-      id: ['q1'],
+      questionCode: ['q1'],
+      questionDescription: ['questionDescription'],
+      questionSectionCode: [0],
+      questionInputTypeCode: [0],
+      questionInputTypeDescription: ['freeText'],
       orderNo: [1],
       type: ['question'],
       required: [true],
@@ -32,8 +36,34 @@ export class GoogleFormCloneMainComponent implements OnInit {
       }),
     });
 
+    let questionModel = this.fb.group({
+      questionCode: ['q1'],
+      questionDescription: ['questionDescription'],
+      questionSectionCode: [0],
+      questionInputTypeCode: [0],
+      questionInputTypeDescription: ['freeText'],
+      sequenceNo: [0],
+      parentAnswerCode: [0],
+      parentQuestionCode: [0],
+      isOptional: [true],
+      isRoot: [true],
+      childQuestions: this.fb.array([]),
+      answers: this.fb.array([
+        this.fb.group({
+          answerChoiceCode: [583],
+          answerChoiceDescription: ['yes'],
+          questionCode: [320],
+          isAnswered: [true],
+          answerRemark: [null],
+          childQuestions: [],
+        }),
+      ]),
+    }) as IQuestionFormGroup;
+
+    console.log(questionModel);
+
     let titleFormGroup = this.fb.group({
-      id: ['q1'],
+      questionCode: ['q1'],
       orderNo: [0],
       type: ['title'],
       required: [true],
@@ -45,7 +75,7 @@ export class GoogleFormCloneMainComponent implements OnInit {
     });
 
     let radioFormGroup = this.fb.group({
-      id: ['q1'],
+      questionCode: ['q1'],
       orderNo: [2],
       type: ['question'],
       required: [true],
@@ -55,21 +85,21 @@ export class GoogleFormCloneMainComponent implements OnInit {
         selectedAnswer: ['first Answer'],
         offeredAnswers: this.fb.array([
           this.fb.group({
-            id: ['01'],
+            questionCode: ['01'],
             orderNo: [0],
             value: ['Yes'],
             remarkAnswer: [false],
             remarkAnswerValue: [''],
           }),
           this.fb.group({
-            id: ['02'],
+            questionCode: ['02'],
             orderNo: [1],
             value: ['No'],
             remarkAnswer: [false],
             remarkAnswerValue: [''],
           }),
           this.fb.group({
-            id: ['03'],
+            questionCode: ['03'],
             orderNo: [2],
             value: ['Others'],
             remarkAnswer: [true],

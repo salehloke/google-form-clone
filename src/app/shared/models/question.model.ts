@@ -1,3 +1,6 @@
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { IAnswerFormGroup, IAnswerValue } from './answer.model';
+
 export interface questionModel {
   id?: string;
   orderNo: number;
@@ -8,7 +11,7 @@ export interface questionModel {
     placeholder?: string;
     type: string;
     offeredAnswers?: {
-      id?: string;
+      questionCode?: string;
       orderNo: number;
       value: string;
       remarkAnswer?: boolean;
@@ -17,4 +20,37 @@ export interface questionModel {
     otherAnswer?: boolean;
     otherAnswerValue?: string;
   };
+}
+
+export interface IQuestionValue {
+  questionCode: number;
+  questionDescription: string;
+  questionSectionCode: number;
+  questionInputTypeCode: number;
+  questionInputTypeDescription: string;
+  sequenceNo: number;
+  parentAnswerCode: number;
+  isOptional: boolean;
+  isRoot: boolean;
+  childQuestions: IQuestionValue[];
+  answers: IAnswerValue[];
+}
+
+export interface IQuestionControls {
+  questionCode: AbstractControl;
+  questionDescription: AbstractControl;
+  questionSectionCode: AbstractControl;
+  questionInputTypeCode: AbstractControl;
+  questionInputTypeDescription: AbstractControl;
+  sequenceNo: AbstractControl;
+  parentAnswerCode: AbstractControl;
+  isOptional: AbstractControl;
+  isRoot: AbstractControl;
+  childQuestions: IQuestionFormGroup[];
+  answers: IAnswerFormGroup[];
+}
+
+export interface IQuestionFormGroup extends FormGroup {
+  value: IQuestionValue;
+  controls: { IQuestionControls };
 }

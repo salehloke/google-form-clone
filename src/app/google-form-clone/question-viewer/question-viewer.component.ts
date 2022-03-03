@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-question-viewer',
   templateUrl: './question-viewer.component.html',
-  styleUrls: ['./question-viewer.component.css']
+  styleUrls: ['./question-viewer.component.css'],
 })
 export class QuestionViewerComponent implements OnInit {
+  @Input() questionFormGroup: any;
+  @Input() i: number;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  get questionType() {
+    return this.questionFormGroup.get('question.type');
   }
-
 }

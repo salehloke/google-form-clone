@@ -121,12 +121,22 @@
   <div [formGroup]="questionFormGroup">
     <div formGroupName="title" class="row">
       <div class="col input-group-lg mb-1">
-        <input class="form-control" type="text" placeholder="Insert title" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Insert title"
+          formControlName="text"
+        />
       </div>
     </div>
     <div formGroupName="title" class="row">
       <div class="col input-group-sm">
-        <input class="form-control" type="text" placeholder="Description" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Description"
+          formControlName="description"
+        />
       </div>
     </div>
   </div>

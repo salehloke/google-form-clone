@@ -5,20 +5,23 @@
   <!-- <i class="material-icons">add</i> -->
 </div>
 <div [formGroup]="mainForm" class="container card mt-3">
-  <div
-    class="myDiv"
-    *ngFor="
-      let element of mainForm.get('questionList')['controls'];
-      let i = index
-    "
-  >
-    <app-question-viewer
-      [questionFormGroup]="element"
-      [questionIndex]="i"
-    ></app-question-viewer>
+  <ol>
+    <div>
+      <li
+        class="myDiv"
+        *ngFor="
+          let element of mainForm.get('questionList')['controls'];
+          let i = index
+        "
+      >
+        <app-question-viewer
+          [questionFormGroup]="element"
+          [questionIndex]="i"
+        ></app-question-viewer>
+      </li>
 
-    <!-- <pre>{{ element.value | json }}</pre> -->
-    <!-- <div class="row mt-3 mb-3" [id]="element.id">
+      <!-- <pre>{{ element.value | json }}</pre> -->
+      <!-- <div class="row mt-3 mb-3" [id]="element.id">
       <div class="row">
         <div class="p-4 pt-0 pb-2">
           <h6 class="form-label">
@@ -106,5 +109,6 @@
         </div>
       </div>
     </div> -->
-  </div>
+    </div>
+  </ol>
 </div>

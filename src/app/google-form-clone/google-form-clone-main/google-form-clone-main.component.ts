@@ -38,16 +38,9 @@ export class GoogleFormCloneMainComponent implements OnInit {
       type: ['title'],
       required: [true],
       title: this.fb.group({
-        text: ['What is your favourite fruit?'],
-        desciption: ['e.g Apple, Tomato, etc'],
-        type: ['title'],
-      }),
-      question: this.fb.group({
         text: ['AMLCFT'],
-        placeholder: ['e.g Apple, Tomato, etc'],
+        description: ['question title'],
         type: ['title'],
-        selectedAnswer: [''],
-        offeredAnswers: this.fb.array([]),
       }),
     });
 

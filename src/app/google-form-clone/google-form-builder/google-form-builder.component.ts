@@ -101,11 +101,11 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   get questionListArray() {
     // return this.mainForm.get('questionList')['controls'];
-    return this.mainForm.get('questions')['controls'];
+    return this.mainForm.get('questionList')['controls'];
   }
 
   get questionList() {
-    return this.mainForm.get('questions') as FormArray;
+    return this.mainForm.get('questionsList') as FormArray;
     // return this.mainForm.get('questionList') as FormArray;
   }
 }

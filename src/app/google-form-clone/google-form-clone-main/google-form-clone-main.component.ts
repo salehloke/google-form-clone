@@ -16,6 +16,7 @@ import { IQuestionFormGroup } from '../../shared/models/question.model';
 export class GoogleFormCloneMainComponent implements OnInit {
   active = 1;
   mainForm: FormGroup;
+  questionnaires: FormArray;
 
   constructor(public fb: FormBuilder) {
     let freeTextFormGroup = this.fb.group({
@@ -115,6 +116,12 @@ export class GoogleFormCloneMainComponent implements OnInit {
         radioFormGroup,
       ]),
     });
+
+    this.questionnaires = this.fb.array([this.fb.group({
+      questionnaireCode: [4],
+      questionnaireDescription: ["crypto Exchange"],
+      
+    })]);
   }
 
   ngOnInit() {}

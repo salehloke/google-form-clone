@@ -61,7 +61,7 @@ export class GoogleFormBuilderComponent implements OnInit {
   }
 
   async addNewQuestion(i: number, type: string) {
-    let questionList = this.mainForm.get('questionList') as FormArray;
+    let questionList = this.questionListArray;
     questionList.insert(i + 1, this.newTextFormGroup);
 
     // Update the order No
@@ -88,7 +88,9 @@ export class GoogleFormBuilderComponent implements OnInit {
 
   async updateOrderNo() {
     // Update question order no after every Remove/ Add / duplicate
-    let questionList = this.mainForm.get('questionList')['controls'];
+    // let questionList = this.mainForm.get('questionList')['controls'];
+    let questionList = this.mainForm.get('questions')['controls'];
+
     await questionList.forEach((question, index) => {
       question.patchValue({
         orderNo: index,
@@ -98,10 +100,12 @@ export class GoogleFormBuilderComponent implements OnInit {
   }
 
   get questionListArray() {
-    return this.mainForm.get('questionList')['controls'];
+    // return this.mainForm.get('questionList')['controls'];
+    return this.mainForm.get('questions')['controls'];
   }
 
   get questionList() {
-    return this.mainForm.get('questionList') as FormArray;
+    return this.mainForm.get('questions') as FormArray;
+    // return this.mainForm.get('questionList') as FormArray;
   }
 }

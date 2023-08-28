@@ -40,7 +40,7 @@ export class FormQuestionComponent implements OnInit {
   // }
 
   newTextFormGroup() {
-    const form: FormGroup<TextQuestionFormModel> =
+    const typedForm: FormGroup<TextQuestionFormModel> =
       new FormGroup<TextQuestionFormModel>({
         id: new FormControl('q1'),
         orderNo: new FormControl(2),
@@ -54,19 +54,8 @@ export class FormQuestionComponent implements OnInit {
           offeredAnswers: new FormArray([]),
         }),
       });
-    return this.fb.group({
-      id: ['q1'],
-      orderNo: [2],
-      type: ['question'],
-      required: [true],
-      question: this.fb.group({
-        text: [''],
-        placeholder: [''],
-        type: ['freeText'],
-        selectedAnswer: [''],
-        offeredAnswers: this.fb.array([]),
-      }),
-    });
+
+    return typedForm;
   }
 
   get newSingleSelection() {

@@ -4,7 +4,7 @@ export interface TextQuestionFormModel {
   id: AbstractControl<string | null>;
   orderNo: AbstractControl<number | null>;
   type: AbstractControl<string | null>;
-  requisred: AbstractControl<boolean | null>;
+  required: AbstractControl<boolean | null>;
   question: FormGroup<QuestionFormGroupModel>;
 }
 

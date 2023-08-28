@@ -3,10 +3,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
 import { _ } from 'lodash';
+
+import {
+  TextQuestionFormModel,
+  QuestionFormGroupModel,
+} from '../../shared/models/text-question-form.model';
 
 @Component({
   selector: 'form-question',
@@ -17,7 +23,37 @@ export class FormQuestionComponent implements OnInit {
   @Input() questionFormGroup!: FormGroup;
   @Input() questionIndex: number;
 
+  // newTextFormGroup() {
+  //   return this.fb.group({
+  //     id: ['q1'],
+  //     orderNo: [2],
+  //     type: ['question'],
+  //     required: [true],
+  //     question: this.fb.group({
+  //       text: [''],
+  //       placeholder: [''],
+  //       type: ['freeText'],
+  //       selectedAnswer: [''],
+  //       offeredAnswers: this.fb.array([]),
+  //     }),
+  //   });
+  // }
+
   newTextFormGroup() {
+    const form: FormGroup<TextQuestionFormModel> =
+      new FormGroup<TextQuestionFormModel>({
+        id: new FormControl('q1'),
+        orderNo: new FormControl(2),
+        type: new FormControl('question'),
+        required: new FormControl(false),
+        question: new FormGroup<QuestionFormGroupModel>({
+          text: new FormControl(''),
+          placeholder: new FormControl(''),
+          type: new FormControl('freeText'),
+          selectedAnswer: new FormControl(''),
+          offeredAnswers: new FormArray([]),
+        }),
+      });
     return this.fb.group({
       id: ['q1'],
       orderNo: [2],

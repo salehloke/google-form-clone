@@ -23,22 +23,6 @@ export class FormQuestionComponent implements OnInit {
   @Input() questionFormGroup!: FormGroup;
   @Input() questionIndex: number;
 
-  // newTextFormGroup() {
-  //   return this.fb.group({
-  //     id: ['q1'],
-  //     orderNo: [2],
-  //     type: ['question'],
-  //     required: [true],
-  //     question: this.fb.group({
-  //       text: [''],
-  //       placeholder: [''],
-  //       type: ['freeText'],
-  //       selectedAnswer: [''],
-  //       offeredAnswers: this.fb.array([]),
-  //     }),
-  //   });
-  // }
-
   newTextFormGroup() {
     const typedForm: FormGroup<TextQuestionFormModel> =
       new FormGroup<TextQuestionFormModel>({

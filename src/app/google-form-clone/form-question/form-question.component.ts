@@ -22,6 +22,7 @@ import {
 export class FormQuestionComponent implements OnInit {
   @Input() questionFormGroup!: FormGroup;
   @Input() questionIndex: number;
+  @Input() test: any;
 
   newTextFormGroup() {
     const typedForm: FormGroup<TextQuestionFormModel> =

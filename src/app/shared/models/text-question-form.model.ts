@@ -15,15 +15,3 @@ export interface QuestionFormGroupModel {
   selectedAnswer: AbstractControl;
   offeredAnswers: FormArray;
 }
-
-// id: ['q1'],
-// orderNo: [2],
-// type: ['question'],
-// required: [true],
-// question: this.fb.group({
-//   text: [''],
-//   placeholder: [''],
-//   type: ['freeText'],
-//   selectedAnswer: [''],
-//   offeredAnswers: this.fb.array([]),
-// }),
